@@ -1,0 +1,39 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: rgb(44,47,57);
+}
+
+nav img {
+    height: 40px;
+    width: auto;
+
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+}
+
+nav ul a, nav ul a:visited {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+
+.default-link {
+    border-bottom: 1px solid transparent;
+}
+
+.active-link {
+    border-bottom: 1px solid white;
+}
+
+li {
+    list-style: none;
+}
