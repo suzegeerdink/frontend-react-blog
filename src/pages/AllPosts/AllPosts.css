@@ -10,7 +10,7 @@ header {
     align-items: center;
     gap: 10px;
     background-color: whitesmoke;
-    height: 1600px;
+    min-height: calc(100vh - 60px);
 }
 
 .blog-posts-by-one {

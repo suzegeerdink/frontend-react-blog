@@ -7,6 +7,7 @@ import NewPost from "./pages/NewPost/NewPost.jsx";
 import NotFoundPagina from "./pages/NotFoundPagina/NotFoundPagina.jsx";
 import Navigation from "./components/Navigation.jsx";
 import BlogPost from "./pages/BlogPost/BlogPost.jsx";
+import React from "react";
 
 function App() {
     return (

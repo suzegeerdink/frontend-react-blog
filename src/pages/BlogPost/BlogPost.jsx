@@ -1,22 +1,37 @@
 import "./Blogpost.css"
-import {useParams} from "react-router-dom";
-import posts from "../../constants/data.json";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {NavLink} from 'react-router-dom';
 import DateCreated from "../../helperfunctions/DateCreated.jsx";
+import axios from "axios";
 
 
 function BlogPost() {
-    const {id} = useParams();
-    const number = parseInt(id);
-    let post;
+    const { id } = useParams();
+    const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    for (let i = 0; i < posts.length; i++) {
-        if (posts[i].id === number) {
-            post = posts[i];
-            break;
+
+    useEffect(() => {
+    async function fetchBlogpostId() {
+        try {
+            const response = await axios.get(`/api/blogposts/${id}`, {
+                headers: {
+                    'novi-education-project-id': 'add5f476-7fd6-45e3-93ca-5f4fcd9f9392',
+                },
+            });
+            setPost(response.data);
+            setLoading(false);
+        } catch (e) {
+            console.error(e)
+            setLoading(false);
         }
     }
 
+        fetchBlogpostId();
+    }, [id]);
+
+    if (loading) return <p className="loading-container">Loading...</p>;
     if (!post) return <div>Post not found</div>;
 
     return (
@@ -36,9 +51,6 @@ function BlogPost() {
                             overzicht</strong></NavLink></li>
                     </ul>
                 </div>
-                <footer>
-                    <p>footer</p>
-                </footer>
             </div>
         </>
     );
